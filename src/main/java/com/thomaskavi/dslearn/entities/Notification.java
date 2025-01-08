@@ -2,22 +2,27 @@ package com.thomaskavi.dslearn.entities;
 
 import java.time.Instant;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "tb_notification")
 public class Notification {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String text;
+
+  @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
   private Instant moment;
-  private boolean read = false;
+  private boolean read;
   private String route;
 
   @ManyToOne
